@@ -45,7 +45,7 @@ h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  To test this code:<br> 
  ```
  $ cd bin/
- $ ./pbf < ../examples/example.pbf
+ $ ./pbf < ../examples/hello_world.pbf
  Hello world!
  $
  ```
