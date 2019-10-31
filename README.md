@@ -36,7 +36,7 @@ Calling it:<br>
 procedure_name;
 ```
 ## Security
-The language interpreter **DOES NOT CHECK** whether ptr is inside of array. 
+The interpreter **DOES NOT CHECK** whether current cell is inside of array. 
 ## Hello, world!
 Here is code of "Hello, world!" with use of procdeures.
 ```
