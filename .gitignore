@@ -1,0 +1,10 @@
+bin/
+obj/
+.DS_Store
+*.swp
+*.swa
+*.swo
+*.o
+*.out
+*.tmp*
+*.pyc
