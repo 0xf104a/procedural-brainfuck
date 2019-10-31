@@ -65,6 +65,17 @@ void eval(char *code){
             ++cp;
             continue;
          }
+         if(cmd=='!'){
+            return ;
+         }
+         if(cmd=='?'){
+            if(!array[ap]){
+               return ;
+            }else{
+                ++cp;
+                continue;
+            }
+         }
          if(cmd=='['){
             size_t *_cp=(size_t *)malloc(sizeof(size_t));//return addr for loop
             *_cp=cp+1;
