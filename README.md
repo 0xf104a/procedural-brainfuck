@@ -39,7 +39,7 @@ procedure_name;
 ## Security
 The interpreter **DOES NOT CHECK** whether current cell is inside of array. 
 ## Hello, world!
-Here is code of "Hello, world!" with use of procdeures.
+Here is code of "Hello, world!" with use of allocated procdeures.
 ```
 h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  .>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.
