@@ -19,7 +19,7 @@ Now the pbf interpreter should be inside of `bin/` directory.
 |`-`                     | Substract 1 from current array value|
 |`[`                     | Begin loop              |
 |`]`                     | End loop                |
-|`!`*                    | Exit procedure          |
+|`!`                     | Exit procedure          |
 |`?`*                    | `!` if current value is 0 |
 |`;`                     | States the end of name that should be called |
 
