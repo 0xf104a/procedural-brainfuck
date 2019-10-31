@@ -88,6 +88,8 @@ void eval(char *code){
                int ret = *(int*)loop_stack->base[loop_stack->sz-1];
                cp=ret;
             }else{
+               int *ret = (int*)loop_stack->base[loop_stack->sz-1];
+               free(ret);  
                cp++;
                array_pop(loop_stack);
             }
