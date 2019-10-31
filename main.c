@@ -20,7 +20,7 @@ bool is_regular(char c){ //regular chars are commands of pbf
     return c=='>'||c=='<'||c=='['||c==']'||c=='+'||c=='-'||c=='!'||c==','||c=='.';
 }
 
-int *array;
+int8_t *array;
 int ap;//array ptr
 
 bool eval_cmd(char cmd){
@@ -128,7 +128,7 @@ void eval(char *code){
 }
 int main(){
     funs=hashtbl_create(HASHTBL_SZ);
-    array=(int *)malloc(sizeof(int)*ARRAY_SIZE);
+    array=(int8_t *)malloc(sizeof(int8_t)*ARRAY_SIZE);
     char *code=(char *)malloc(sizeof(char));
     code[0]='\0';
     size_t sz=1;
@@ -141,8 +141,9 @@ int main(){
         code=realloc(code, sizeof(char)*(++sz));
         code[sz-1]='\0';
     }
-    bzero(array, sizeof(int)*ARRAY_SIZE);
+    bzero(array, sizeof(int8_t)*ARRAY_SIZE);
     eval(code);
     free(code);
     return  0;
 }
+
