@@ -25,6 +25,7 @@ Now the pbf interpreter should be in `bin/` directory.
 
 <b>*</b> – Not yet implemented 
 ## Procedures
+Procedure contains some brainfuck code which will be executed when procedure called. Procedures named only by letter sequences. To call porcedure you should put it name and `;` after it. Procedures could call other procedures(untested). You are free to define procedure inside a loop, but **this could lead to a severe memory leak.**<br>
 ```
 procedure_name{...}
 ```
