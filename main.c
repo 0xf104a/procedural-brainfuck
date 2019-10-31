@@ -8,9 +8,10 @@
 
 #include "hashtable.h"
 #include "array.h"
-
+/**Configuration**/
 #define ARRAY_SIZE 65535
 #define HASHTBL_SZ 255
+/**End configuration**/
 typedef struct{
   int cp;
   char *code;
@@ -100,6 +101,10 @@ void eval(char *code){
              cp++;
          }
          if(code[cp]==';'){
+             if(!hashtbl_check_key(funs, name)){
+                printf("Undefined procedure: `%s`\n", name);
+                exit(-1);
+             }
              procedure_t *proc = hashtbl_get(funs, name);
              proc->cp=0;
              eval(proc->code);
