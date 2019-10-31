@@ -21,16 +21,17 @@ Now the pbf interpreter should be in `bin/` directory.
 |`]`                     | End loop                |
 |`!`*                    | Exit procedure          |
 |`?`*                    | `!` if current value is 0 |
-|`;`                     | Says the end of name that should be called |
+|`;`                     | States the end of name that should be called |
 
 <b>*</b> – Not yet implemented 
 ## Procedures
 Procedure contains some brainfuck code which will be executed when procedure called. Procedures named only by letter sequences. To call porcedure you should put it name and `;` after it. Procedures could call other procedures. You are free to define procedure inside a loop, but **this could lead to a severe memory leak.**<br>
+Definition example:<br>
 ```
 procedure_name{...}
 ```
 <br>
-Calling it:<br>
+Calling example:<br>
 
 ```
 procedure_name;
