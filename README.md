@@ -6,7 +6,7 @@ Version of brainfuck interpreter with procedures. Usual brainfuck description: h
 ./build.sh all
 ```
 <br>
-Now the pbf interpreter should be in `bin/` directory.
+Now the pbf interpreter should be inside of `bin/` directory.
 <br>
 
 ## Command table
@@ -31,15 +31,14 @@ Definition example:<br>
 procedure_name{...}
 ```
 <br>
-Calling example:<br>
-
+Call example:<br>
 ```
 procedure_name;
 ```
 ## Security
-The interpreter **DOES NOT CHECK** whether current cell is inside of array. 
+The interpreter **DOES NOT CHECK** whether current cell is inside of allocated array. 
 ## Hello, world!
-Here is code of "Hello, world!" with use of allocated procdeures.
+Here is code of "Hello, world!" app with use of procdeures.
 ```
 h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  .>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.
