@@ -1,6 +1,7 @@
 # procedural-brainfuck
 ## Description
-Version of brainfuck interpreter with procedures. Usual brainfuck description: https://en.wikipedia.org/wiki/Brainfuck
+Version of brainfuck interpreter with procedures. Usual brainfuck description: https://en.wikipedia.org/wiki/Brainfuck<br>
+Tested only on Mac OS X Mojave.
 ## Building it
 ```
 ./build.sh all
@@ -8,6 +9,7 @@ Version of brainfuck interpreter with procedures. Usual brainfuck description: h
 <br>
 Now the pbf interpreter should be inside of `bin/` directory.
 <br>
+
 
 ## Command table
 
