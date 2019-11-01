@@ -102,7 +102,7 @@ void eval(char *code){
          char *name=(char *)malloc(sizeof(char));
          name[0]='\0';
          size_t sz=1;
-         while(isalpha(code[cp])||code[cp]==' '){
+         while(isalpha(code[cp])||code[cp]==' '||code[cp]=='_'||isdigit(code[cp])){
              if(code[cp]==' '){
                  cp++;
                  continue;
