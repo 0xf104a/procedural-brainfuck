@@ -1,6 +1,7 @@
 # procedural-brainfuck
 ## Description
-Version of brainfuck interpreter with procedures. Usual brainfuck description: https://en.wikipedia.org/wiki/Brainfuck
+Version of brainfuck interpreter with procedures. Usual brainfuck description: https://en.wikipedia.org/wiki/Brainfuck<br>
+Tested only on Mac OS X Mojave.
 ## Building it
 ```
 ./build.sh all
@@ -8,6 +9,7 @@ Version of brainfuck interpreter with procedures. Usual brainfuck description: h
 <br>
 Now the pbf interpreter should be inside of `bin/` directory.
 <br>
+
 
 ## Command table
 
@@ -25,7 +27,7 @@ Now the pbf interpreter should be inside of `bin/` directory.
 
 <b>*</b> – Not yet tested 
 ## Procedures
-Procedure contains some brainfuck code which will be executed when procedure called. Procedures named only with use of letter sequences. To call porcedure you should put it name and `;` after it. Procedures could call other procedures. You are free to define procedure inside a loop, but **this could lead to a severe memory leak.**<br>
+Procedure contains some brainfuck code which will be executed when procedure called. Procedure name could containt letters, numbers and underscores. To call porcedure you should put it name and `;` after it. Procedures could call other procedures. You are free to define procedure inside a loop, but **this could lead to a severe memory leak.**<br>
 Definition example:<br>
 ```
 procedure_name{...}
@@ -52,3 +54,10 @@ h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  Hello world!
  $
  ```
+ <p>
+ You could check out some more examples <a href="https://github.com/Andrewerr/procedural-brainfuck/tree/master/examples"> here</a>
+ </p>
+ 
+## ToDo
+* Implement security
+* Implement server mode which will allow to put a sequence of files to run
