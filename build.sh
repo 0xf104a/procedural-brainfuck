@@ -13,19 +13,19 @@ echo "Procedural brainfuck build system"
 
 
 error(){
-    echo "${red}(X): ${normal}${1}"
+    echo "${bold}${red}(X): ${normal}${1}"
 }
 
 success(){
-    echo "${green}==> ${normal}${1}"
+    echo "${bold}${green}==> ${normal}${1}"
 }
 
 warn(){
-    echo "${yellow}==> ${normal}${1}"
+    echo "${bold}${yellow}==> ${normal}${1}"
 }
 
 info(){
-    echo "${blue}==> ${normal}${1}"
+    echo "${bold}${blue}==> ${normal}${1}"
 }
 
 exec(){

@@ -152,7 +152,7 @@ int main(){
     size_t sz=1;
     for(;;){
         char c=getc(stdin);
-        if(c==EOF){
+        if(c==(char)EOF){
             break;
         }
         code[sz-1]=c;
