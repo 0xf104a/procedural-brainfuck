@@ -54,3 +54,6 @@ h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  Hello world!
  $
  ```
+## ToDo
+* Implement security
+* Implement server mode which will allow to put a sequenc of files to execute
