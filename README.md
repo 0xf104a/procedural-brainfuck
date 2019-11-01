@@ -54,6 +54,10 @@ h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  Hello world!
  $
  ```
+ <p>
+ You could check out some more examples <a href="https://github.com/Andrewerr/procedural-brainfuck/tree/master/examples"> here</a>
+ </p>
+ 
 ## ToDo
 * Implement security
 * Implement server mode which will allow to put a sequenc of files to execute
