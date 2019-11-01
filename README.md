@@ -27,7 +27,7 @@ Now the pbf interpreter should be inside of `bin/` directory.
 
 <b>*</b> – Not yet tested 
 ## Procedures
-Procedure contains some brainfuck code which will be executed when procedure called. Procedure names could containt letters, numbers and underscores. To call porcedure you should put it name and `;` after it. Procedures could call other procedures. You are free to define procedure inside a loop, but **this could lead to a severe memory leak.**<br>
+Procedure contains some brainfuck code which will be executed when procedure called. Procedure name could containt letters, numbers and underscores. To call porcedure you should put it name and `;` after it. Procedures could call other procedures. You are free to define procedure inside a loop, but **this could lead to a severe memory leak.**<br>
 Definition example:<br>
 ```
 procedure_name{...}
