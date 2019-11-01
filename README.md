@@ -60,4 +60,4 @@ h{++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
  
 ## ToDo
 * Implement security
-* Implement server mode which will allow to put a sequenc of files to execute
+* Implement server mode which will allow to put a sequence of files to run
