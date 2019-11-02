@@ -5,17 +5,24 @@
 #include <string.h>
 #include <strings.h> //bzero
 #include <ctype.h>
+#include <errno.h>
+#include <unistd.h> //access
 
 #include "hashtable.h"
 #include "array.h"
 /**Configuration**/
 #define ARRAY_SIZE 65535
 #define HASHTBL_SZ 255
+#define ARRAY_CAPACITY //initial capacity for array_t
 /**End configuration**/
 typedef struct{
   int cp;
   char *code;
 } procedure_t;
+
+typedef enum{
+   SECURITY_NONE, SECURITY_LOOP, SECURITY_DIE
+} security;
 
 bool is_regular(char c){ //regular chars are commands of pbf
     return c=='>'||c=='<'||c=='['||c==']'||c=='+'||c=='-'||c=='!'||c==','||c=='.';
@@ -23,6 +30,13 @@ bool is_regular(char c){ //regular chars are commands of pbf
 
 int8_t *array;
 int ap;//array ptr
+security security_mode;
+hashtable *funs;
+
+void free_procedure(procedure_t *procedure){
+     free(procedure->code);
+     free(procedure);
+}
 
 bool eval_cmd(char cmd){
          if(cmd=='+'){
@@ -35,23 +49,40 @@ bool eval_cmd(char cmd){
          }
          if(cmd=='>'){
             ap++;
+            if(ap>=ARRAY_SIZE&&security_mode!=SECURITY_NONE){
+               if(security_mode == SECURITY_LOOP){
+                  ap = ap % ARRAY_SIZE;
+               }else{
+                  fprintf(stderr, "Security policy forbids exiting out of array size, which is set to %d\n", ARRAY_SIZE);
+                  exit(-1);
+               }
+             }
             return true;
          }
          if(cmd=='<'){
             ap--;
+            if(ap<0&&security_mode!=SECURITY_NONE){
+               if(security_mode == SECURITY_LOOP){
+                  ap = ARRAY_SIZE - 1;
+               }else{
+                  fprintf(stderr, "Security policy forbids exiting out of array size, which is set to %d\n", ARRAY_SIZE);
+                  exit(-1);
+               }
+            }
             return true;
          }
          if(cmd=='.'){
-            printf("%c",array[ap]);
+            putchar_unlocked(array[ap]);
             return true;
          }
          if(cmd==','){
-            scanf("%c",&array[ap]);
+            fflush(stdin);
+            array[ap] = getchar_unlocked();
             return true;
          }
          return false;
 }
-hashtable *funs;
+
 void eval(char *code){
      array_t *loop_stack=array_create(1);
      size_t csz = strlen(code);
@@ -144,24 +175,89 @@ void eval(char *code){
          }
      }
 }
-int main(){
-    funs=hashtbl_create(HASHTBL_SZ);
-    array=(int8_t *)malloc(sizeof(int8_t)*ARRAY_SIZE);
-    char *code=(char *)malloc(sizeof(char));
-    code[0]='\0';
-    size_t sz=1;
-    for(;;){
-        char c=getc(stdin);
-        if(c==(char)EOF){
-            break;
-        }
-        code[sz-1]=c;
-        code=realloc(code, sizeof(char)*(++sz));
-        code[sz-1]='\0';
+
+void help(char *name){ //Help message
+    printf("Usage: %s [--help -h] <filname> [--security none|loop|die]\n",name);
+}
+
+void init(void){ //initialize intepreter
+    funs = hashtbl_create(HASHTBL_SZ);
+    array = (int8_t *)malloc(sizeof(int8_t)*ARRAY_SIZE);
+    bzero(array, ARRAY_SIZE*sizeof(int8_t));
+}
+
+void reset(void){ //reset inerpreter
+      size_t i;
+    //free procedures
+    for(i=0; i<funs->sz; ++i){
+        free_procedure(funs->values->base[i]);
     }
-    bzero(array, sizeof(int8_t)*ARRAY_SIZE);
-    eval(code);
-    free(code);
+    hashtbl_destroy(funs);
+    //free array
+    free(array);
+    init();//initialize it again
+}
+
+char *readf(char *fname){
+     FILE *f = fopen(fname, "rb");
+     char *buffer = NULL;
+     if(!f){
+       return NULL;
+     }
+     fseek(f, 0, SEEK_END);
+     size_t len = ftell(f);
+     fseek(f, 0, SEEK_SET);
+     buffer = malloc(len + 1);
+     fread(buffer, 1, len, f);
+     fclose(f);
+     buffer[len]='\0';
+     return buffer;
+}
+
+int main(int argc, char *argv[]){
+    /*Parse args*/
+    if(argc<2){
+       help(argv[0]);
+       return -1;
+    }
+    if(!strcmp(argv[1],"-h")||!strcmp(argv[1],"--help")){
+       help(argv[0]);
+       return 0;
+    }    
+    char *filename=argv[1];
+    if( access(filename, F_OK) == -1){
+        fprintf(stderr,"%s: access: %s(%d).\n",argv[0], strerror(errno), errno);  
+        return -1;
+    }
+    char *code=readf(filename);
+    if(!code){
+       fprintf(stderr,"%s: fopen: %s(%d).\n",argv[0], strerror(errno), errno);
+    }
+    security_mode = SECURITY_LOOP;
+    if(argc > 2){
+       if(!strcmp(argv[2],"--security")){
+          if(argc < 4){
+             fprintf(stderr,"`--security` requires an argument.\n");
+             return -1;
+          }
+          if(!strcmp(argv[3], "none")){
+             security_mode = SECURITY_NONE;
+          }else if(!strcmp(argv[3], "loop")){
+             security_mode = SECURITY_LOOP;
+          }else if(!strcmp(argv[3], "die")){
+             security_mode = SECURITY_DIE;
+          }else{
+             fprintf(stderr,"Unrecognized security mode: `%s`",argv[3]);
+             return -1;
+          } 
+       }else{
+         fprintf(stderr,"Unrecognized command-line argument: `%s.`\n",argv[2]);
+         return -1;
+       }
+    }
+    /*Run code */
+    init();
+    eval(code);  
     return  0;
 }
 

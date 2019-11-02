@@ -99,7 +99,7 @@ bool hashtbl_check_key(hashtable *tbl,char *key){
     }
 }
 
-void hastbl_destroy(hashtable *tbl){
+void hashtbl_destroy(hashtable *tbl){
     assert(tbl!=NULL);
     int i=0;
     _hashtable_node *iterator=NULL;

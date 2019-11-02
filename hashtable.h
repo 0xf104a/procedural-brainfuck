@@ -3,6 +3,7 @@
 
 #include <sys/types.h>
 #include <stdbool.h>
+#include <strings.h>
 
 #include "array.h"
 
@@ -26,7 +27,7 @@ hashtable *hashtbl_create(size_t capacity);
 void hashtbl_add(hashtable *tbl, char *key, void *data);
 void *hashtbl_get(hashtable *tbl, char *key);
 bool hashtbl_check_key(hashtable *tbl,char *key);
-void hastbl_destroy(hashtable *tbl);
+void hashtbl_destroy(hashtable *tbl);
 void hashtbl_set(hashtable *tbl, char *key,void *value);
 void hashtbl_rm(hashtable *tbl, char *key);
 
