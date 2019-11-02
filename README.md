@@ -25,7 +25,7 @@ Now the pbf interpreter should be inside of `bin/` directory.
 |`?`*                    | `!` if current value is 0 |
 |`;`                     | States the end of name that should be called |
 |`,`                     | Read char from `stdin`  |
-|`.`                     | Put chat to `stdout `   |
+|`.`                     | Put char to `stdout `   |
 
 <b>*</b> – Not yet tested <br>
 ## Procedures
