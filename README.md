@@ -4,12 +4,18 @@ Version of brainfuck interpreter with procedures. Usual brainfuck description: h
 Tested only on Mac OS X Mojave.
 ## Building it
 ```
-./build.sh all
+$ ./build.sh all
 ```
 <br>
 Now the pbf interpreter should be inside of `bin/` directory.
 <br>
 
+## Running your code
+To run your code:
+```
+$ cd bin/ 
+$ ./pbf path/to/your/code.pbf
+```
 
 ## Command table
 
