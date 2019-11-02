@@ -41,6 +41,10 @@ Call example:<br>
 procedure_name;
 ```
 ## Arguments
+General usage: <br>
+`./bin/pbf [--help -h] <filname> [--security none|loop|die] `
+<br>
+
 | Argument                       |                       Description     |
 |--------------------------------|---------------------------------------|
 | `-h` `--help`                  | Display help message                  |
