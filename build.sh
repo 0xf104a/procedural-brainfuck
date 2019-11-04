@@ -64,7 +64,7 @@ if [ $# -eq 0 ]; then
 fi
 
 if [[ $1 == "-h" ]]; then
-    echo "Usage:"$0" <-h> [debug|relaese|library|clean]"
+    echo "Usage:"$0" <-h> [all|clean]"
     echo "-h        Display this help message and exit."
     echo "all       Build procedural brainfuck."
     echo "clean     Remove obj/ bin/ directories."
