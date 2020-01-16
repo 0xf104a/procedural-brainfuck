@@ -177,7 +177,7 @@ void eval(char *code){
 }
 
 void help(char *name){ //Help message
-    printf("Usage: %s [--help -h] <filname> [--security none|loop|die]\n",name);
+    printf("Usage: %s [--help -h] <filename> [--security none|loop|die]\n",name);
 }
 
 void init(void){ //initialize intepreter
