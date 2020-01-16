@@ -48,7 +48,7 @@ procedure_name;
 ```
 ## Arguments
 General usage: <br>
-`./bin/pbf [--help -h] <filname> [--security none|loop|die] `
+`./bin/pbf [--help -h] <filename> [--security none|loop|die] `
 <br>
 
 | Argument                       |                       Description     |
