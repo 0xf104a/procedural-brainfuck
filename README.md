@@ -58,6 +58,7 @@ General usage: <br>
 | `--security <arg>`             | Set security mode                     |
 
 ## Security mode
+Security mode defines what to do when array index is out of range.
 To set a security mode put it's name after `--security` argument.<br>
 
 | Mode               | Description                      |
